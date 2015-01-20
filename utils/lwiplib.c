@@ -43,7 +43,7 @@
 
 //*****************************************************************************
 //*****************************************************************************
-#include "include/netif/tivaif.h"
+#include "netif/tivaif.h"
 #include "inc/hw_emac.h"
 #include "lwip/dhcp.h"
 #include "ipv4/lwip/autoip.h"

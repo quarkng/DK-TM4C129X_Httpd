@@ -51,16 +51,14 @@
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.compilerID.INCLUDE_PATH.1939090101" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/tasks}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/third_party/lwip-1.4.1/src/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/third_party/lwip-1.4.1/ports/tiva-tm4c129}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/third_party/lwip-1.4.1/src/include/ipv4}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/third_party/lwip-1.4.1/apps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/third_party/lwip-1.4.1/ports/tiva-tm4c129/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/examples/boards/dk-tm4c129x&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/src/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/src/include/ipv4&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/ports/tiva-tm4c129/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/apps&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/FreeRTOS/Source/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/FreeRTOS&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/FreeRTOS/Source/portable/CCS/ARM_CM4F&quot;"/>
