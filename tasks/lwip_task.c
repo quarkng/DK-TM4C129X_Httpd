@@ -31,7 +31,7 @@
 #include "utils/locator.h"
 #include "utils/ustdlib.h"
 #include "httpserver_raw/httpd.h"
-#include "freertos_demo.h"
+#include "TM4C129X_Httpd.h"
 #include "cgifuncs.h"
 #include "led_task.h"
 #include "idle_task.h"
