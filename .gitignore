@@ -1,4 +1,4 @@
-html/images/
-Debug/
-.settings/org.eclipse.core.resources.prefs
-.launches/
+DK-TM4C129X_Httpd/html/images/
+DK-TM4C129X_Httpd/Debug/
+DK-TM4C129X_Httpd/.settings/org.eclipse.core.resources.prefs
+DK-TM4C129X_Httpd/.launches/
