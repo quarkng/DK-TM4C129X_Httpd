@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>DK-TM4C129X_Httpd</name>
+	<name>FreeRTOS</name>
 	<comment></comment>
 	<projects>
-		<project>TI_Drivers</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
