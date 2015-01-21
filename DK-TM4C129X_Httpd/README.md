@@ -1,5 +1,11 @@
 # HTTP Server on the DK-TM4C129X Board
 
+Place all projects into the same workspace.  The DK-TM4C129X_Httpd project depends on the other projects being compiled into static libraries.
+* DK-TM4C129X_Httpd
+* FreeRTOS
+* LWIP_1_4_1
+* TI_Drivers
+
 #### January 20, 2015
 I have a DK-TM4C129X evaluation board from Texas Instruments and would like to set up an embedded HTTP server on it.  The example code from TI left a lot of improvements to be desired (for example, they #include a bunch of .c source files in utils/lwiplib.c).
 

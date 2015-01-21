@@ -58,6 +58,7 @@
 							</tool>
 							<tool id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.library.librarianDebug.1111133565" name="ARM Archiver" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.library.librarianDebug">
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.archiverID.OUTPUT_FILE.178546065" name="Output file" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.archiverID.OUTPUT_FILE" value="&quot;${ProjName}.lib&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.archiverID.PRINT_GLOBAL_SYMBOLS.853041965" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.archiverID.PRINT_GLOBAL_SYMBOLS" value="true" valueType="boolean"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
