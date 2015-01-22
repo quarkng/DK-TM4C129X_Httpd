@@ -1,8 +1,12 @@
+<!--- Best viewed as GitHub-Flavored Markdown ( http://jbt.github.io/markdown-editor/ ) -->
+<!--- Also mostly compatible with StackEdit Markdown ( https://stackedit.io/editor ) -->
+
 # HTTP Server on the DK-TM4C129X Board
 
 Place all projects into the same workspace.  The DK-TM4C129X_Httpd project depends on the other projects being compiled into static libraries.
 
 * DK-TM4C129X_Httpd
+* FileSys
 * FreeRTOS
 * LWIP_1_4_1
 * TI_Drivers
@@ -17,4 +21,4 @@ This project is my attempt in making a better code structure and provide a start
 #### January 21, 2015
 * Move the LWIP and FreeRTOS into separate projects so that they do not get recompiled everytime the application project has some changes.
 * Also, plan to take a look into using SD card to hold HTML files so that they do not need to be converted into C arrays to be burned into program Flash.
-* Noticed that TI replaced fs.c from LWIP with their custom one.  Need to investigate if that is good design.
+  - Noticed that TI replaced fs.c from LWIP with their custom one.  Need to investigate if that is good design.

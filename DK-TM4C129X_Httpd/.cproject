@@ -91,6 +91,7 @@
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.linkerID.XML_LINK_INFO.2139522280" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.1.linkerID.LIBRARY.500186520" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.1.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FileSys/Debug/FileSys.lib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/Debug/FreeRTOS.lib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LWIP_1_4_1/Debug/LWIP_1_4_1.lib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TI_Drivers/Debug/TI_Drivers.lib}&quot;"/>

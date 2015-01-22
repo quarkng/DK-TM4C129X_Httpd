@@ -296,7 +296,7 @@ SetupServices(void *pvArg)
     lwIPLocalMACGet(pui8MAC);
     LocatorMACAddrSet(pui8MAC);
 
-    LocatorAppTitleSet("DK-TM4C129X freertos_demo");
+    LocatorAppTitleSet("DK-TM4C129X Httpd");
 
     //
     // Initialize the sample httpd server.
