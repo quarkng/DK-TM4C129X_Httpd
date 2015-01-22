@@ -8,12 +8,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <stddef.h>
-//#include <string.h>
-//#include "utils/lwiplib.h"
-//#include "httpserver_raw/httpd.h"
+#include <string.h>
+
+#include "lwip/mem.h"
+#include "httpserver_raw/httpd.h"
 #include "httpserver_raw/fs.h"
-#include "httpserver_raw/fsdata.h"
 
 #include "fatfs/src/ff.h"
 #include "fatfs/src/diskio.h"
@@ -42,7 +41,26 @@
 #define PATH_BUF_SIZE   (80)
 
 // Temporary buffer size for reading/writing to SD card.
-#define DATA_BUF_SIZE   (128)
+#define DATA_BUF_SIZE   (_MAX_SS)
+
+
+#define WEB_FOLDER  "/html"	// All web files are under this sub-folder in the SD card
+
+
+//*****************************************************************************
+// A structure that helps tie FatFS and lwIP httpd fs-interface.
+typedef struct
+{
+	struct fs_file fs;
+	FIL            fileObject;
+} SdCardFsFile_t;
+
+//*****************************************************************************
+
+static FATFS g_sFatFs;
+//static DIR g_sDirObject;
+//static FILINFO g_sFileInfo;
+//static FIL g_sFileObject;
 
 
 //*****************************************************************************
@@ -53,9 +71,21 @@
 void
 fs_init(void)
 {
+	FRESULT iFResult;
+
     //
-    // Nothing special to do for this application.  Flash File System only.
+    // Mount the file system, using logical disk 0.
     //
+    iFResult = f_mount(0, &g_sFatFs);
+    if(iFResult != FR_OK)
+    {
+//        UARTprintf("f_mount error: %s\n", StringFromFResult(iFResult));
+//        return(1);
+    	for(;;);
+    }
+
+
+
 }
 
 //*****************************************************************************
@@ -80,33 +110,37 @@ fs_tick(uint32_t ui32TickMS)
 struct fs_file *
 fs_open(const char *name)
 {
-    struct fs_file *psFile = NULL;
+    SdCardFsFile_t *psFile = NULL;
 
-    psFile = mem_malloc(sizeof(struct fs_file));
+    psFile = (SdCardFsFile_t *) mem_malloc(sizeof(*psFile));
     if(NULL != psFile)
     {
     	FRESULT iFResult;
-    	static FIL fileObject;
+    	char fullname[PATH_BUF_SIZE];
 
-    	iFResult = f_open(&fileObject, name, FA_READ);
+		strncpy( fullname, (name[0] != '/') ? (WEB_FOLDER "/") : (WEB_FOLDER), PATH_BUF_SIZE );
+    	strncat( fullname, name, PATH_BUF_SIZE);
 
+    	iFResult = f_open(&psFile->fileObject, fullname, FA_READ);
+        if(iFResult != FR_OK)
+        {
+        	mem_free(psFile);
+            return(NULL);
+        }
 
-        psFile->data = (char*) &fileObject;
-        psFile->len  = 0;
-
-        // For now, we setup the read index to the end of the file,
-        // indicating that all data has been read.
-        psFile->index = 0;
+        psFile->fs.data = NULL; // psFile->fileObject.buf
+        psFile->fs.len  =  0; // psFile->fileObject.fsize;
+        psFile->fs.index = psFile->fileObject.fptr;
 
         // We are not using any file system extensions in this
         // application, so set the pointer to NULL.
-        psFile->pextension = NULL;
+        psFile->fs.pextension = NULL;
 
         // None of the files include http headers
-        psFile->http_header_included = 0;
+        psFile->fs.http_header_included = 0;
     }
 
-    return(psFile);
+    return(&psFile->fs);
 }
 
 //*****************************************************************************
@@ -117,9 +151,6 @@ fs_open(const char *name)
 void
 fs_close(struct fs_file *file)
 {
-
-
-
     //
     // Free the main file system object.
     //
@@ -137,12 +168,14 @@ int
 fs_read(struct fs_file *file, char *buffer, int count)
 {
     int iAvailable = -1;
+    UINT br;
+    SdCardFsFile_t *psFile = (SdCardFsFile_t *) file;
+    FRESULT frslt;
 
-#if 0
     //
     // Check to see if more data is available.
     //
-    if(file->len == file->index)
+    if(psFile->fileObject.fsize <= psFile->fileObject.fptr)
     {
         //
         // There is no remaining data.  Return a -1 for EOF indication.
@@ -150,26 +183,20 @@ fs_read(struct fs_file *file, char *buffer, int count)
         return(-1);
     }
 
-    //
-    // Determine how much data we can copy.  The minimum of the 'count'
-    // parameter or the available data in the file system buffer.
-    //
-    iAvailable = file->len - file->index;
-    if(iAvailable > count)
+
+    frslt = f_read( &psFile->fileObject, buffer, count, &br );
+
+    if( frslt != FR_OK )
     {
-        iAvailable = count;
+    	return(-1); // read error
     }
 
-    //
-    // Copy the data.
-    //
-    memcpy(buffer, file->data + iAvailable, iAvailable);
-    file->index += iAvailable;
+    iAvailable = br;
 
-    //
-    // Return the count of data that we copied.
-    //
-#endif
+    // Always synchronize the two structure's values
+    psFile->fs.index = psFile->fileObject.fptr;
+    psFile->fs.len  = psFile->fileObject.fsize;
+
     return(iAvailable);
 }
 
@@ -180,11 +207,7 @@ fs_read(struct fs_file *file, char *buffer, int count)
 //*****************************************************************************
 int fs_bytes_left(struct fs_file *file)
 {
-#if 0
-    //
-    // Return the number of bytes left to be read from this file.
-    //
-    return(file->len - file->index);
-#endif
-    return 0;
+	SdCardFsFile_t *psFile = (SdCardFsFile_t *) file;
+
+    return(psFile->fileObject.fsize - psFile->fileObject.fptr);
 }
