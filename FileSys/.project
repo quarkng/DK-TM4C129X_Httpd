@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>DK-TM4C129X_Httpd</name>
+	<name>FileSys</name>
 	<comment></comment>
 	<projects>
-		<project>TI_Drivers</project>
-		<project>FreeRTOS</project>
-		<project>LWIP_1_4_1</project>
-		<project>FileSys</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

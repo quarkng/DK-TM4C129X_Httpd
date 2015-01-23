@@ -185,7 +185,7 @@ main(void)
     //
     // Draw the application frame.
     //
-    FrameDraw(&sContext, "freertos-demo");
+    FrameDraw(&sContext, "Httpd: Built " __DATE__ " " __TIME__ );
 
     //
     // Make sure the main oscillator is enabled because this is required by

@@ -31,6 +31,7 @@
 #include "utils/locator.h"
 #include "utils/ustdlib.h"
 #include "httpserver_raw/httpd.h"
+#include "httpserver_raw/fs.h"
 #include "TM4C129X_Httpd.h"
 #include "cgifuncs.h"
 #include "led_task.h"
@@ -296,11 +297,12 @@ SetupServices(void *pvArg)
     lwIPLocalMACGet(pui8MAC);
     LocatorMACAddrSet(pui8MAC);
 
-    LocatorAppTitleSet("DK-TM4C129X freertos_demo");
+    LocatorAppTitleSet("DK-TM4C129X Httpd");
 
     //
-    // Initialize the sample httpd server.
+    // Initialize the sample httpd server and supporting filesystem.
     //
+    fs_init();
     httpd_init();
 
     //

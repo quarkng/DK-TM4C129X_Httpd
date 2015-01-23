@@ -35,7 +35,7 @@
 #include "idle_task.h"
 #include "images.h"
 #include "priorities.h"
-#include "random.h"
+#include "utils/random.h"
 #include "TM4C129X_Httpd.h"
 #include "spider_task.h"
 #include "FreeRTOS.h"
