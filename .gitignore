@@ -1,8 +1,9 @@
 __HideFromGit/
-DK-TM4C129X_Httpd/html/images/
 DK-TM4C129X_Httpd/Debug/
 DK-TM4C129X_Httpd/.settings/org.eclipse.core.resources.prefs
 DK-TM4C129X_Httpd/.launches/
+FileSys/Debug/
+FileSys/.settings/org.eclipse.core.resources.prefs
 FreeRTOS/Debug/
 FreeRTOS/.settings/org.eclipse.core.resources.prefs
 LWIP_1_4_1/Debug/
