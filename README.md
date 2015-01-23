@@ -19,7 +19,7 @@ Import all projects into the same workspace.  The DK-TM4C129X_Httpd project depe
 
 When testing this out, copy the items inside *_SD_Card_Contents* to the root directory of an SD Card.  The files in *html* folder will be served as the root folder of the web server.  
 
-I have seen it have strange failures if you try to hot-swap the SD card.   **Always** power down the board completely when inserting the SD card.
+If you have the debugger attached, large files may not get transferred through HTTP completely.  If you see your graphics look corrupted, try stopping the debugger.
 
 --------
 ### Condensed History
